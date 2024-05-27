@@ -12,23 +12,23 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-
---  use({
---	  "ellisonleao/gruvbox.nvim",
---	  as = 'gruvbox',
---	  config = function()
---		  vim.cmd('colorscheme gruvbox')
---	  end
---  })
-
+  use {'nvim-telescope/telescope-ui-select.nvim' }
 
   use({
-	  "morhetz/gruvbox",
+	  "ellisonleao/gruvbox.nvim",
 	  as = 'gruvbox',
 	  config = function()
 		  vim.cmd('colorscheme gruvbox')
 	  end
   })
+
+--  use({
+--	  "morhetz/gruvbox",
+--	  as = 'gruvbox',
+--	  config = function()
+--		  vim.cmd('colorscheme gruvbox')
+--	  end
+--  })
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('theprimeagen/harpoon')
