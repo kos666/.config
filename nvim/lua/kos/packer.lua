@@ -54,5 +54,7 @@ return require('packer').startup(function(use)
       }
   }
 
+  use 'Wansmer/symbol-usage.nvim'
+
   use 'mfussenegger/nvim-dap'
 end)
