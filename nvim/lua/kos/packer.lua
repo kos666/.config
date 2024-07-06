@@ -14,12 +14,16 @@ return require('packer').startup(function(use)
   }
   use {'nvim-telescope/telescope-ui-select.nvim' }
 
+--  use { "briones-gabriel/darcula-solid.nvim",
+--      requires = "rktjmp/lush.nvim",
+--	  config = function()
+--		  vim.cmd('colorscheme darcula-solid')
+--	  end
+--  }
+
   use({
 	  "ellisonleao/gruvbox.nvim",
 	  as = 'gruvbox',
-	  config = function()
-		  vim.cmd('colorscheme gruvbox')
-	  end
   })
 
 --  use({
@@ -57,4 +61,17 @@ return require('packer').startup(function(use)
   use 'Wansmer/symbol-usage.nvim'
 
   use 'mfussenegger/nvim-dap'
+
+  use {
+      'kos666/goimpl.nvim',
+      requires = {
+          {'nvim-lua/plenary.nvim'},
+          {'nvim-lua/popup.nvim'},
+          {'nvim-telescope/telescope.nvim'},
+          {'nvim-treesitter/nvim-treesitter'},
+      },
+      config = function()
+          require'telescope'.load_extension'goimpl'
+      end,
+  }
 end)

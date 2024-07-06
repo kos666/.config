@@ -11,3 +11,5 @@ vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})
 -- end)
 
 telescope.load_extension("ui-select")
+
+vim.api.nvim_set_keymap('n', '<leader>im', [[<cmd>lua require'telescope'.extensions.goimpl.goimpl{}<CR>]], {noremap=true, silent=true})
