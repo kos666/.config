@@ -18,15 +18,15 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set('n', ']d', function () vim.diagnostic.goto_next() end, opts)
 end)
 
-lsp_zero.format_on_save({
-    format_opts = {
-        async = false,
-        timeout_ms = 10000,
-    },
-    servers = {
-         ['gopls'] = {'go'}
-    }
-})
+-- lsp_zero.format_on_save({
+--     format_opts = {
+--         async = false,
+--         timeout_ms = 10000,
+--     },
+--     servers = {
+--          ['gopls'] = {'go'}
+--     }
+-- })
 
 -- to learn how to use mason.nvim with lsp-zero
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
@@ -56,9 +56,9 @@ cmp.setup({
     {name = 'path'},
     {name = 'nvim_lsp'},
     {name = 'nvim_lua'},
-    {name = 'luasnip', keyword_length = 2, option = { show_autosnippets = true }},
+    {name = 'luasnip', keyword_length = 1, option = { show_autosnippets = true }},
     -- {name = 'cmp_luasnip'},
-    {name = 'buffer', keyword_length = 3},
+    {name = 'buffer', keyword_length = 1},
   },
   formatting = lsp_zero.cmp_format(),
   mapping = cmp.mapping.preset.insert({
@@ -92,11 +92,13 @@ cmp.setup({
             fallback()
         end
     end, { "i", "s" })
-
   }),
   preselect = 'item',
   completion = {
     completeopt = 'menu,menuone,noinsert'
-  }
+  },
+  enabled = function()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+  end
 })
 

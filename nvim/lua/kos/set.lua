@@ -16,3 +16,7 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.o.background = "dark"
+
+-- 'default', 'atlantis', 'andromeda', 'shusia','maia', 'espresso'
+vim.g.sonokai_style = "default"
+vim.cmd("colorscheme sonokai")

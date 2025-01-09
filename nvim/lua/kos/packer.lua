@@ -14,30 +14,16 @@ return require('packer').startup(function(use)
   }
   use {'nvim-telescope/telescope-ui-select.nvim' }
 
---  use { "briones-gabriel/darcula-solid.nvim",
---      requires = "rktjmp/lush.nvim",
---	  config = function()
---		  vim.cmd('colorscheme darcula-solid')
---	  end
---  }
-
   use({
 	  "ellisonleao/gruvbox.nvim",
 	  as = 'gruvbox',
   })
-
---  use({
---	  "morhetz/gruvbox",
---	  as = 'gruvbox',
---	  config = function()
---		  vim.cmd('colorscheme gruvbox')
---	  end
---  })
+  use({
+      'sainnhe/sonokai',
+  })
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('theprimeagen/harpoon')
   use 'mbbill/undotree'
-  use 'tpope/vim-fugitive'
 
   use {
       'VonHeikemen/lsp-zero.nvim',
@@ -60,7 +46,13 @@ return require('packer').startup(function(use)
 
   use 'Wansmer/symbol-usage.nvim'
 
-  use 'mfussenegger/nvim-dap'
+  use {
+      "windwp/nvim-autopairs",
+      event = "InsertEnter",
+      config = function()
+          require("nvim-autopairs").setup {}
+      end
+  }
 
   use {
       'kos666/goimpl.nvim',
